@@ -34,6 +34,8 @@ class MainActivity : AppCompatActivity() {
         bindObserve()
 
         setSupportActionBar(binding.toolbar)
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
