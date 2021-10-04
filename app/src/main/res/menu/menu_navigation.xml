@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_coin_converter"
+        android:icon="@drawable/ic_baseline_monetization_on"
+        android:title="@string/converter"/>
+    <item
+        android:id="@+id/action_list"
+        android:icon="@drawable/ic_baseline_list"
+        android:title="@string/save"/>
+    <item
+        android:id="@+id/action_deleted"
+        android:icon="@drawable/ic_baseline_delete_sweep"
+        android:title="@string/deleted"/>
+</menu>
