@@ -1,4 +1,4 @@
-package com.example.coinconverterspeech.presentation
+package com.example.coinconverterspeech.presentation.historic
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver

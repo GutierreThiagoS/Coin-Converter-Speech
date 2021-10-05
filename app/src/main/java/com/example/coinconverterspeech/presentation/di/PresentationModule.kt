@@ -1,6 +1,6 @@
 package com.example.coinconverterspeech.presentation.di
 
-import com.example.coinconverterspeech.presentation.HistoryViewModel
+import com.example.coinconverterspeech.presentation.historic.HistoryViewModel
 import com.example.coinconverterspeech.presentation.MainViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules

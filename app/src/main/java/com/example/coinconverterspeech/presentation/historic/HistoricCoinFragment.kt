@@ -1,32 +1,44 @@
-package com.example.coinconverterspeech.ui.history
+package com.example.coinconverterspeech.presentation.historic
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.coinconverterspeech.core.extensions.createDialog
 import com.example.coinconverterspeech.core.extensions.createProgressDialog
 import com.example.coinconverterspeech.databinding.ActivityHistoryBinding
-import com.example.coinconverterspeech.presentation.historic.HistoryViewModel
+import com.example.coinconverterspeech.ui.history.HistoryListAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HistoryActivity : AppCompatActivity() {
+class HistoricCoinFragment: Fragment() {
 
-    private val adapter by lazy { HistoryListAdapter() }
-    private val dialog by lazy { createProgressDialog() }
+    private val adapter by lazy { HistoricListCoinAdapter() }
+    private val dialog by lazy { requireContext().createProgressDialog() }
     private val viewModel by viewModel<HistoryViewModel>()
     private val binding by lazy { ActivityHistoryBinding.inflate(layoutInflater) }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(binding.root)
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        return binding.root
+
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.rvHistory.adapter = adapter
         binding.rvHistory.addItemDecoration(
-            DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL)
+            DividerItemDecoration(requireContext(), DividerItemDecoration.HORIZONTAL)
         )
-
+/*
         setSupportActionBar(binding.toolbar)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)*/
 
         bindObserve()
 
@@ -34,21 +46,20 @@ class HistoryActivity : AppCompatActivity() {
     }
 
     private fun bindObserve() {
-        viewModel.state.observe(this) {
+        viewModel.state.observe(requireActivity()) {
             when (it) {
                 HistoryViewModel.State.Loading -> dialog.show()
                 is HistoryViewModel.State.Error -> {
                     dialog.dismiss()
-                    createDialog {
+                    requireContext().createDialog {
                         setMessage(it.error.message)
                     }.show()
                 }
                 is HistoryViewModel.State.Success -> {
                     dialog.dismiss()
-                    adapter.submitList(it.list)
+                    adapter.addAll(it.list)
                 }
             }
         }
     }
-
 }

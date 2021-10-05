@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/coinConverterFragment"
-        android:name="com.example.coinconverterspeech.presentation.CoinConverterFragment"
+        android:name="com.example.coinconverterspeech.presentation.coin_converter.CoinConverterFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_coin_converter" />
 

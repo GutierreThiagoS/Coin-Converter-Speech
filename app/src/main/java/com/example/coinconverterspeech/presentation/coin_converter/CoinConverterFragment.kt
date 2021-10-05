@@ -1,4 +1,4 @@
-package com.example.coinconverterspeech.presentation
+package com.example.coinconverterspeech.presentation.coin_converter
 
 import android.os.Bundle
 import android.view.*
@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.example.coinconverterspeech.core.extensions.*
 import com.example.coinconverterspeech.data.model.Coin
 import com.example.coinconverterspeech.databinding.FragmentCoinConverterBinding
+import com.example.coinconverterspeech.presentation.MainViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CoinConverterFragment: Fragment() {
@@ -33,7 +34,6 @@ class CoinConverterFragment: Fragment() {
         bindObserve()
 
     }
-
 
     private fun bindAdapters() {
         val list = Coin.values()

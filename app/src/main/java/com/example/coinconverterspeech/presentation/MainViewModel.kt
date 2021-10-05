@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.coinconverterspeech.data.model.ExchangeResponseValue
 import com.example.coinconverterspeech.domain.GetExchangeValueUseCase
 import com.example.coinconverterspeech.domain.SaveExchangeUseCase
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
@@ -23,7 +24,7 @@ class MainViewModel(
     val state: LiveData<State> = _state
 
     fun getExchangeValue(coins: String) {
-        viewModelScope.launch {
+        viewModelScope.launch{
             getExchangeValueUseCase(coins)
                 .flowOn(Dispatchers.Main)
                 .onStart {
