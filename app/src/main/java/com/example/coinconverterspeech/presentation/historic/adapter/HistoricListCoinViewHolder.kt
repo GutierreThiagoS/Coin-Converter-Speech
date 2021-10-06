@@ -1,4 +1,4 @@
-package com.example.coinconverterspeech.presentation.historic
+package com.example.coinconverterspeech.presentation.historic.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coinconverterspeech.core.extensions.formatCurrency

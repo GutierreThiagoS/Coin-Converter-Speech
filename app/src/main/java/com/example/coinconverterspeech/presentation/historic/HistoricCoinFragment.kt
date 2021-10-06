@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.coinconverterspeech.core.extensions.createDialog
 import com.example.coinconverterspeech.core.extensions.createProgressDialog
-import com.example.coinconverterspeech.databinding.ActivityHistoryBinding
-import com.example.coinconverterspeech.ui.history.HistoryListAdapter
+import com.example.coinconverterspeech.databinding.FragmentHistoricBinding
+import com.example.coinconverterspeech.presentation.historic.adapter.HistoricListCoinAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HistoricCoinFragment: Fragment() {
@@ -17,8 +17,7 @@ class HistoricCoinFragment: Fragment() {
     private val adapter by lazy { HistoricListCoinAdapter() }
     private val dialog by lazy { requireContext().createProgressDialog() }
     private val viewModel by viewModel<HistoryViewModel>()
-    private val binding by lazy { ActivityHistoryBinding.inflate(layoutInflater) }
-
+    private val binding by lazy { FragmentHistoricBinding.inflate(layoutInflater) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,8 +25,6 @@ class HistoricCoinFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         return binding.root
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -36,9 +33,6 @@ class HistoricCoinFragment: Fragment() {
         binding.rvHistory.addItemDecoration(
             DividerItemDecoration(requireContext(), DividerItemDecoration.HORIZONTAL)
         )
-/*
-        setSupportActionBar(binding.toolbar)
-        supportActionBar?.setDisplayShowHomeEnabled(true)*/
 
         bindObserve()
 

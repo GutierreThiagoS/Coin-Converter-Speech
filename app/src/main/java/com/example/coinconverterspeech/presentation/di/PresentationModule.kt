@@ -2,6 +2,7 @@ package com.example.coinconverterspeech.presentation.di
 
 import com.example.coinconverterspeech.presentation.historic.HistoryViewModel
 import com.example.coinconverterspeech.presentation.MainViewModel
+import com.example.coinconverterspeech.presentation.deleted.DeletedViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.module.Module
@@ -17,6 +18,7 @@ object PresentationModule {
         return module {
             viewModel { HistoryViewModel(get()) }
             viewModel { MainViewModel(get(), get()) }
+            viewModel { DeletedViewModel(get()) }
         }
     }
 }

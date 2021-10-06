@@ -1,4 +1,4 @@
-package com.example.coinconverterspeech.presentation.historic
+package com.example.coinconverterspeech.presentation.historic.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
