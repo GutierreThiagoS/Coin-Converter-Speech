@@ -8,14 +8,16 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.coinconverterspeech.core.extensions.createDialog
 import com.example.coinconverterspeech.core.extensions.createProgressDialog
+import com.example.coinconverterspeech.data.model.ExchangeResponseValue
 import com.example.coinconverterspeech.databinding.FragmentDeletedBinding
 import com.example.coinconverterspeech.presentation.State
+import com.example.coinconverterspeech.presentation.deleted.adapter.DeletedListAdapter
 import com.example.coinconverterspeech.presentation.historic.adapter.HistoricListCoinAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class DeletedListFragment: Fragment() {
+class DeletedListFragment: Fragment(), DeletedHandler {
 
-    private val adapter by lazy { HistoricListCoinAdapter() }
+    private val adapter by lazy { DeletedListAdapter(this) }
     private val dialog by lazy { requireContext().createProgressDialog() }
     private val viewModel by viewModel<DeletedViewModel>()
 
@@ -57,5 +59,13 @@ class DeletedListFragment: Fragment() {
                 }
             }
         }
+    }
+
+    override fun onClickRestore(item: ExchangeResponseValue) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onCLickRemove(item: ExchangeResponseValue) {
+        TODO("Not yet implemented")
     }
 }

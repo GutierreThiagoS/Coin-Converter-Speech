@@ -1,4 +1,4 @@
-package com.example.coinconverterspeech.presentation
+package com.example.coinconverterspeech.presentation.coin_converter
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.coinconverterspeech.data.model.ExchangeResponseValue
 import com.example.coinconverterspeech.domain.GetExchangeValueUseCase
 import com.example.coinconverterspeech.domain.SaveExchangeUseCase
-import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
@@ -15,7 +14,7 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
-class MainViewModel(
+class CoinConverterViewModel(
     private val saveExchangeUseCase: SaveExchangeUseCase,
     private val getExchangeValueUseCase: GetExchangeValueUseCase
 ) : ViewModel() {
