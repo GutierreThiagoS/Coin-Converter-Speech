@@ -20,24 +20,24 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="deletedListFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-13" />
+                            <option name="y" value="18" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="historicCoinFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
                             <option name="x" value="-226" />
-                            <option name="y" value="19" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="navigation2">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="-442" />
                             <option name="y" value="19" />
                           </Point>
                         </option>

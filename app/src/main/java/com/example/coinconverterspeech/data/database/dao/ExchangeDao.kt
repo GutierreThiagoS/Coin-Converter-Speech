@@ -13,6 +13,9 @@ interface ExchangeDao {
     @Query("SELECT * FROM tb_exchange")
     fun findAll(): Flow<List<ExchangeResponseValue>>
 
+    @Query("SELECT * FROM tb_exchange")
+    fun findAllDeleted(): Flow<List<ExchangeResponseValue>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun save(entity: ExchangeResponseValue)
 }

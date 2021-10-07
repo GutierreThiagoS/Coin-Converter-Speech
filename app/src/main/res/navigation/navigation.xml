@@ -16,5 +16,10 @@
         android:name="com.example.coinconverterspeech.presentation.historic.HistoricCoinFragment"
         android:label="HistoricCoinFragment"
         tools:layout="@layout/fragment_historic"/>
+    <fragment
+        android:id="@+id/deletedListFragment"
+        android:name="com.example.coinconverterspeech.presentation.deleted.DeletedListFragment"
+        android:label="DeletedListFragment"
+        tools:layout="@layout/fragment_deleted"/>
 
 </navigation>

@@ -8,4 +8,7 @@ interface CoinRepository {
 
     suspend fun save(exchange: ExchangeResponseValue)
     fun list(): Flow<List<ExchangeResponseValue>>
+
+    fun getListDeleted(): Flow<List<ExchangeResponseValue>>
+
 }

@@ -22,8 +22,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.history.HistoryActivity"/>
-
     </application>
 
 </manifest>

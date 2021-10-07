@@ -37,4 +37,8 @@ class CoinRepositoryImpl(
     override fun list(): Flow<List<ExchangeResponseValue>> {
         return dao.findAll()
     }
+
+    override fun getListDeleted(): Flow<List<ExchangeResponseValue>> {
+        return dao.findAllDeleted()
+    }
 }

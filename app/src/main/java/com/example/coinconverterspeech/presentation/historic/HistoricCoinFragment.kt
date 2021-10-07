@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.coinconverterspeech.core.extensions.createDialog
 import com.example.coinconverterspeech.core.extensions.createProgressDialog
 import com.example.coinconverterspeech.databinding.FragmentHistoricBinding
+import com.example.coinconverterspeech.presentation.State
 import com.example.coinconverterspeech.presentation.historic.adapter.HistoricListCoinAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -42,14 +43,14 @@ class HistoricCoinFragment: Fragment() {
     private fun bindObserve() {
         viewModel.state.observe(requireActivity()) {
             when (it) {
-                HistoryViewModel.State.Loading -> dialog.show()
-                is HistoryViewModel.State.Error -> {
+                State.Loading -> dialog.show()
+                is State.Error -> {
                     dialog.dismiss()
                     requireContext().createDialog {
                         setMessage(it.error.message)
                     }.show()
                 }
-                is HistoryViewModel.State.Success -> {
+                is State.Success -> {
                     dialog.dismiss()
                     adapter.addAll(it.list)
                 }

@@ -7,8 +7,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.coinconverterspeech.data.model.ExchangeResponseValue
 import com.example.coinconverterspeech.domain.ListExchangeUseCase
+import com.example.coinconverterspeech.presentation.State
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
@@ -38,12 +38,5 @@ class HistoryViewModel(
                     _state.value = State.Success(it)
                 }
         }
-    }
-
-    sealed class State {
-        object Loading : State()
-
-        data class Success(val list: List<ExchangeResponseValue>) : State()
-        data class Error(val error: Throwable) : State()
     }
 }

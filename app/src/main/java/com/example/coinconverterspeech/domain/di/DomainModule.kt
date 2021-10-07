@@ -1,5 +1,6 @@
 package com.example.coinconverterspeech.domain.di
 
+import com.example.coinconverterspeech.domain.DeletedListExchangeUseCase
 import com.example.coinconverterspeech.domain.GetExchangeValueUseCase
 import com.example.coinconverterspeech.domain.ListExchangeUseCase
 import com.example.coinconverterspeech.domain.SaveExchangeUseCase
@@ -18,6 +19,7 @@ object DomainModule {
             factory { ListExchangeUseCase(get()) }
             factory { SaveExchangeUseCase(get()) }
             factory { GetExchangeValueUseCase(get()) }
+            factory { DeletedListExchangeUseCase(get()) }
         }
     }
 }
