@@ -34,7 +34,7 @@ class DeletedListFragment: Fragment(), DeletedHandler {
         super.onViewCreated(view, savedInstanceState)
         binding.rvDeleted.adapter = adapter
         binding.rvDeleted.addItemDecoration(
-            DividerItemDecoration(requireContext(), DividerItemDecoration.HORIZONTAL)
+            DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
         )
 
         bindObserve()

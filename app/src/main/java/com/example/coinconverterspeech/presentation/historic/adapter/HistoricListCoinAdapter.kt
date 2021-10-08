@@ -6,14 +6,17 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coinconverterspeech.data.model.ExchangeValue
 import com.example.coinconverterspeech.databinding.ItemHistoryBinding
+import com.example.coinconverterspeech.presentation.historic.HistoricHandler
 
-class HistoricListCoinAdapter: RecyclerView.Adapter<HistoricListCoinViewHolder>() {
+class HistoricListCoinAdapter(
+    private val handler: HistoricHandler
+): RecyclerView.Adapter<HistoricListCoinViewHolder>() {
 
     private var exchangeResponseList = mutableListOf<ExchangeValue>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoricListCoinViewHolder {
         val binding = ItemHistoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return HistoricListCoinViewHolder(binding)
+        return HistoricListCoinViewHolder(binding, handler)
     }
 
     override fun onBindViewHolder(holder: HistoricListCoinViewHolder, position: Int) {

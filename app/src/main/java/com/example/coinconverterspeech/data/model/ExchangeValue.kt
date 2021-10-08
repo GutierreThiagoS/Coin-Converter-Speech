@@ -6,8 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "tb_exchange")
 data class ExchangeValue(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo var id: Long,
+    @PrimaryKey(autoGenerate = true) var id: Long,
     @ColumnInfo val code: String,
     @ColumnInfo val codein: String,
     @ColumnInfo val name: String,

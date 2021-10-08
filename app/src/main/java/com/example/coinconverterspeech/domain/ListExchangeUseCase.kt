@@ -12,4 +12,9 @@ class ListExchangeUseCase(
     override suspend fun execute(): Flow<List<ExchangeValue>> {
         return repository.list()
     }
+
+    suspend fun invoke(param: ExchangeValue) {
+        repository.deleteItem(param)
+    }
+
 }

@@ -8,14 +8,15 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.coinconverterspeech.core.extensions.createDialog
 import com.example.coinconverterspeech.core.extensions.createProgressDialog
+import com.example.coinconverterspeech.data.model.ExchangeValue
 import com.example.coinconverterspeech.databinding.FragmentHistoricBinding
 import com.example.coinconverterspeech.presentation.State
 import com.example.coinconverterspeech.presentation.historic.adapter.HistoricListCoinAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HistoricCoinFragment: Fragment() {
+class HistoricCoinFragment: Fragment(), HistoricHandler{
 
-    private val adapter by lazy { HistoricListCoinAdapter() }
+    private val adapter by lazy { HistoricListCoinAdapter(this) }
     private val dialog by lazy { requireContext().createProgressDialog() }
     private val viewModel by viewModel<HistoryViewModel>()
     private val binding by lazy { FragmentHistoricBinding.inflate(layoutInflater) }
@@ -32,7 +33,7 @@ class HistoricCoinFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.rvHistory.adapter = adapter
         binding.rvHistory.addItemDecoration(
-            DividerItemDecoration(requireContext(), DividerItemDecoration.HORIZONTAL)
+            DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
         )
 
         bindObserve()
@@ -56,5 +57,9 @@ class HistoricCoinFragment: Fragment() {
                 }
             }
         }
+    }
+
+    override fun onClickDelete(item: ExchangeValue, position: Int) {
+
     }
 }
