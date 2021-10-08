@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.coinconverterspeech.R
 import com.example.coinconverterspeech.core.extensions.formatCurrency
 import com.example.coinconverterspeech.data.model.Coin
-import com.example.coinconverterspeech.data.model.ExchangeResponseValue
+import com.example.coinconverterspeech.data.model.ExchangeValue
 import com.example.coinconverterspeech.databinding.ItemDeletadBinding
 import com.example.coinconverterspeech.presentation.deleted.DeletedHandler
 
@@ -14,7 +14,7 @@ class DeletedListViewHolder(
     private val handler: DeletedHandler
 ): RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item: ExchangeResponseValue) {
+    fun bind(item: ExchangeValue) {
         binding.tvName.text = item.name
 
         val coin = Coin.getByName(item.codein)
@@ -25,7 +25,7 @@ class DeletedListViewHolder(
         }
     }
 
-    private fun showPopup(item: ExchangeResponseValue){
+    private fun showPopup(item: ExchangeValue){
         val ivMore = binding.menuDeletedItem
         val popupMenu = PopupMenu(ivMore.context, ivMore)
         popupMenu.menuInflater.inflate(R.menu.menu_item_deleted, popupMenu.menu)

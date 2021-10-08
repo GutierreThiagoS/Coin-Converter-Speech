@@ -5,9 +5,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.coinconverterspeech.data.database.dao.ExchangeDao
-import com.example.coinconverterspeech.data.model.ExchangeResponseValue
+import com.example.coinconverterspeech.data.model.ExchangeValue
 
-@Database(entities = [ExchangeResponseValue::class], version = 1)
+@Database(entities = [ExchangeValue::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun exchangeDao(): ExchangeDao

@@ -3,13 +3,13 @@ package com.example.coinconverterspeech.presentation.deleted.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.coinconverterspeech.data.model.ExchangeResponseValue
+import com.example.coinconverterspeech.data.model.ExchangeValue
 import com.example.coinconverterspeech.databinding.ItemDeletadBinding
 import com.example.coinconverterspeech.presentation.deleted.DeletedHandler
 
 class DeletedListAdapter(private val deletedHandler: DeletedHandler): RecyclerView.Adapter<DeletedListViewHolder>() {
 
-    private val exchangeList = mutableListOf<ExchangeResponseValue>()
+    private val exchangeList = mutableListOf<ExchangeValue>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DeletedListViewHolder {
         val binding = ItemDeletadBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -22,9 +22,10 @@ class DeletedListAdapter(private val deletedHandler: DeletedHandler): RecyclerVi
 
     override fun getItemCount() = exchangeList.size
 
-    fun addAll(list: List<ExchangeResponseValue>){
+    fun addAll(list: List<ExchangeValue>){
         exchangeList.clear()
         exchangeList.addAll(list)
+        notifyDataSetChanged()
     }
 
 }

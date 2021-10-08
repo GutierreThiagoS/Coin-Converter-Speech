@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.coinconverterspeech.data.model.ExchangeResponseValue
+import com.example.coinconverterspeech.data.response.ExchangeResponseValue
 import com.example.coinconverterspeech.domain.GetExchangeValueUseCase
 import com.example.coinconverterspeech.domain.SaveExchangeUseCase
 import kotlinx.coroutines.Dispatchers

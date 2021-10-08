@@ -1,7 +1,7 @@
 package com.example.coinconverterspeech.presentation.deleted
 
 import androidx.lifecycle.*
-import com.example.coinconverterspeech.data.model.ExchangeResponseValue
+import com.example.coinconverterspeech.data.model.ExchangeValue
 import com.example.coinconverterspeech.domain.DeletedListExchangeUseCase
 import com.example.coinconverterspeech.presentation.State
 import kotlinx.coroutines.Dispatchers
@@ -35,7 +35,11 @@ class DeletedViewModel(
         }
     }
 
-    fun deletedPermanet(item: ExchangeResponseValue){
+    fun deletedPermanet(item: ExchangeValue){
+
+    }
+
+    fun restorePermanet(item: ExchangeValue){
 
     }
 }
