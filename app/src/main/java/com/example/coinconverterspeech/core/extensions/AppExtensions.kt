@@ -22,6 +22,3 @@ fun Double.formatCurrency(locale: Locale = Locale.getDefault()): String {
     return NumberFormat.getCurrencyInstance(locale).format(this)
 }
 
-fun String.wordCount(): Int{
-    return split(" ").size
-}
