@@ -75,7 +75,7 @@ class CoinConverterFragment: Fragment(), SpeechListener {
         }
 
         binding.speechInputButton.setOnClickListener {
-            permissiomRecordAudio()
+            permissionRecordAudio()
         }
     }
 
@@ -105,7 +105,7 @@ class CoinConverterFragment: Fragment(), SpeechListener {
 
     private fun consultCoin(result: String, isReal: Boolean){
         viewModel.speechSaved.value = true
-        binding.tilValue.text = if (isReal) result.convertValueReal() else result
+        binding.tilValue.text = if (isReal) result.convertValueReal() else result.toNumber()
         val search = "${binding.tilFrom.text}-${binding.tilTo.text}"
         viewModel.getExchangeValue(search)
     }
@@ -147,17 +147,28 @@ class CoinConverterFragment: Fragment(), SpeechListener {
     override fun onSpeechResults(requestCode: Int?, status: Int, result: String) {
         Log.e("RESULT", "$result, REQUESTCODE $requestCode STATUS $status")
         when(requestCode){
+
             SpeechUtils.SAVE_COIN -> {
                 if (binding.tvResult.text.isNotBlank() && binding.tilValue.text.isNotBlank()){
                     viewModel.speechSaved.value = true
                     saveExchange()
                 } else speechUtils.speak("Campo vazio!")
             }
+
             SpeechUtils.VALUE_COIN -> {
                 consultCoin(result, false)
             }
+
             SpeechUtils.VALUE_COIN_REAL -> {
                 consultCoin(result, true)
+            }
+
+            SpeechUtils.CONVERT_BRL_TO_USD -> {
+                binding.tvFrom.setText(Coin.BRL.name, false)
+                binding.tvTo.setText(Coin.USD.name, false)
+                consultCoin(result,
+                    result.contains(".", true)
+                )
             }
         }
     }
@@ -170,7 +181,7 @@ class CoinConverterFragment: Fragment(), SpeechListener {
 
     override fun onSpeechFinished() { }
 
-    private fun permissiomRecordAudio(){
+    private fun permissionRecordAudio(){
         if (ContextCompat.checkSelfPermission(requireContext(),
                 Manifest.permission.RECORD_AUDIO)
             != PackageManager.PERMISSION_GRANTED) {
