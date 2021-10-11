@@ -241,10 +241,24 @@ class SpeechUtils(private val speakeListner: WeakReference<SpeechListener>, owne
                 result.contains("grava", true)
     }
 
+    private fun containsConvertRealToDollar(result: String): Boolean {
+        return result.contains("real para dólar") && result.wordCount() < 6 ||
+                result.contains("reais para dólar") && result.wordCount() < 6 ||
+                result.contains("real pra dólar") && result.wordCount() < 6 ||
+                result.contains("reais pra dólar") && result.wordCount() < 6 ||
+                result.contains("real em dólar") && result.wordCount() < 6 ||
+                result.contains("reais em dólar") && result.wordCount() < 6 ||
+                result.contains("réis para dona") && result.wordCount() < 6 ||
+                result.contains("réis pra dona") && result.wordCount() < 6 ||
+                result.contains("r$") && result.contains("em dólar") && result.wordCount() < 6 ||
+                result.contains("r$") && result.contains("pra dólar") && result.wordCount() < 6 ||
+                result.contains("r$") && result.contains("para dólar") && result.wordCount() < 6
+    }
+
     private fun containsValueCoin(result: String): Boolean{
         return try {
             result.toDouble()
-            true
+            if (result.contains("r$")) false else true
         }catch (e: Exception){
             Log.e("containsValueCoin", "$result Exception $e")
             false
@@ -259,20 +273,6 @@ class SpeechUtils(private val speakeListner: WeakReference<SpeechListener>, owne
             Log.e("ValueCoinValue", "$result Exception $e")
             false
         }
-    }
-
-    private fun containsConvertRealToDollar(result: String):Boolean{
-        return result.contains("real para dólar") && result.wordCount() < 6 ||
-                result.contains("reais para dólar") && result.wordCount() < 6 ||
-                result.contains("real pra dólar") && result.wordCount() < 6 ||
-                result.contains("reais pra dólar") && result.wordCount() < 6 ||
-                result.contains("real em dólar") && result.wordCount() < 6 ||
-                result.contains("reais em dólar") && result.wordCount() < 6 ||
-                result.contains("réis para dona") && result.wordCount() < 6 ||
-                result.contains("réis pra dona") && result.wordCount() < 6 ||
-                result.contains("r$") && result.contains("em dólar") && result.wordCount() < 6 ||
-                result.contains("r$") && result.contains("qpra dólar") && result.wordCount() < 6 ||
-                result.contains("r$") && result.contains("para dólar") && result.wordCount() < 6
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
