@@ -1,6 +1,5 @@
 package com.example.coinconverterspeech.core.extensions
 
-import android.icu.number.FormattedNumber
 import android.util.Log
 import com.example.coinconverterspeech.data.model.Coin
 import com.example.coinconverterspeech.data.model.CoinCod
