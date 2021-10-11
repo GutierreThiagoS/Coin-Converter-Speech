@@ -13,8 +13,4 @@ class ListExchangeUseCase(
         return repository.list()
     }
 
-    suspend fun invoke(param: ExchangeValue) {
-        repository.deleteItem(param)
-    }
-
 }

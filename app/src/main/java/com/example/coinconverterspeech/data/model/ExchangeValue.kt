@@ -11,5 +11,8 @@ data class ExchangeValue(
     @ColumnInfo val codein: String,
     @ColumnInfo val name: String,
     @ColumnInfo val bid: Double,
-    @ColumnInfo val deleted: Boolean
+    @ColumnInfo val create_date: String,
+    @ColumnInfo val ask: Double,
+    @ColumnInfo val coinToConverter: Double,
+    @ColumnInfo var deleted: Boolean
 )

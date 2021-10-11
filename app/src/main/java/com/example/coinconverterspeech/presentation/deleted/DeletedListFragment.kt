@@ -61,10 +61,10 @@ class DeletedListFragment: Fragment(), DeletedHandler {
     }
 
     override fun onClickRestore(item: ExchangeValue) {
-
+        viewModel.restorePermanent(item)
     }
 
     override fun onCLickRemove(item: ExchangeValue) {
-
+        viewModel.deletedPermanent(item)
     }
 }

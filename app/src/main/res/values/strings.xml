@@ -5,4 +5,5 @@
     <string name="deleted">Lixeira</string>
     <string name="deleted_label">Excluir</string>
     <string name="restore_label">Restaurar</string>
+    <string name="speech_input_button">speechInputButton</string>
 </resources>

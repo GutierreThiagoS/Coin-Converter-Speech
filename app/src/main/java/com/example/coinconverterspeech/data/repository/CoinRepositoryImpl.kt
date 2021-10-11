@@ -44,7 +44,12 @@ class CoinRepositoryImpl(
         return dao.findAllDeleted()
     }
 
-    override suspend fun deleteItem(exchange: ExchangeValue) {
+    override suspend fun update(exchange: ExchangeValue) {
         dao.update(exchange)
     }
+
+    override suspend fun deletedPermanently(exchange: ExchangeValue) {
+        dao.delete(exchange)
+    }
+
 }

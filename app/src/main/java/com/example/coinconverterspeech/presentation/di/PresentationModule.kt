@@ -16,9 +16,25 @@ object PresentationModule {
 
     private fun viewModelModules(): Module {
         return module {
-            viewModel { HistoryViewModel(get()) }
-            viewModel { CoinConverterViewModel(get(), get()) }
-            viewModel { DeletedViewModel(get()) }
+            viewModel {
+                HistoryViewModel(
+                    listExchangeUseCase = get(),
+                    moveToTrashExchangeUseCase = get()
+                )
+            }
+            viewModel {
+                CoinConverterViewModel(
+                    saveExchangeUseCase = get(),
+                    getExchangeValueUseCase = get()
+                )
+            }
+            viewModel {
+                DeletedViewModel(
+                    deletedListExchangeUseCase = get(),
+                    restoreExchangeUseCase = get(),
+                    deleteExchangeUseCase = get()
+                )
+            }
         }
     }
 }

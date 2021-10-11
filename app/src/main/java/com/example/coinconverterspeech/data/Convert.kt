@@ -15,6 +15,9 @@ object Convert {
                 codein = codein,
                 name = name,
                 bid = bid,
+                ask = ask,
+                create_date = create_date,
+                coinToConverter = coinToConverter,
                 deleted = false
             )
         }

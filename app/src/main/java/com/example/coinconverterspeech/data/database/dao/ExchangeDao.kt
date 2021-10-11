@@ -16,6 +16,9 @@ interface ExchangeDao {
     @Update
     suspend fun update(entity: ExchangeValue)
 
+    @Delete
+    suspend fun delete(entity: ExchangeValue)
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun save(entity: ExchangeValue)
 }

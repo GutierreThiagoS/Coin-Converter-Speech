@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.coinconverterspeech.data.Convert
+import com.example.coinconverterspeech.data.model.ExchangeValue
 import com.example.coinconverterspeech.data.response.ExchangeResponseValue
 import com.example.coinconverterspeech.domain.GetExchangeValueUseCase
 import com.example.coinconverterspeech.domain.SaveExchangeUseCase
@@ -21,6 +23,8 @@ class CoinConverterViewModel(
 
     private val _state = MutableLiveData<State>()
     val state: LiveData<State> = _state
+
+    val speechSaved = MutableLiveData(false)
 
     fun getExchangeValue(coins: String) {
         viewModelScope.launch{
@@ -49,14 +53,14 @@ class CoinConverterViewModel(
                     _state.value = State.Error(it)
                 }
                 .collect {
-                    _state.value = State.Saved
+                    _state.value = State.Saved(Convert.convert(exchange))
                 }
         }
     }
 
     sealed class State {
         object Loading: State()
-        object Saved: State()
+        data class Saved(val exchange: ExchangeValue): State()
 
         data class Success(val exchange: ExchangeResponseValue): State()
         data class Error(val error: Throwable): State()

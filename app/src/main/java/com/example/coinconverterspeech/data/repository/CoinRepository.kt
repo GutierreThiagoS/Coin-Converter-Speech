@@ -12,6 +12,8 @@ interface CoinRepository {
 
     fun getListDeleted(): Flow<List<ExchangeValue>>
 
-    suspend fun deleteItem(exchange: ExchangeValue)
+    suspend fun update(exchange: ExchangeValue)
+
+    suspend fun deletedPermanently(exchange: ExchangeValue)
 
 }

@@ -9,4 +9,7 @@ data class ExchangeResponseValue(
     val codein: String,
     val name: String,
     val bid: Double,
+    val ask: Double,
+    val create_date: String,
+    val coinToConverter: Double,
 )

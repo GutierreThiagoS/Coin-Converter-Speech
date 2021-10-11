@@ -15,11 +15,16 @@ class HistoricListCoinViewHolder(
     fun bind(item: ExchangeValue) {
         binding.tvName.text = item.name
 
-        val coin = Coin.getByName(item.codein)
-        binding.tvValue.text = item.bid.formatCurrency(coin.locale)
+        val coinIn = Coin.getByName(item.codein)
+        val coin = Coin.getByName(item.code)
+        binding.tvValue.text = item.bid.formatCurrency(coinIn.locale)
+        binding.tvValueConvert.text = item.coinToConverter.formatCurrency(coin.locale)
 
         binding.deleteItem.setOnClickListener {
-            historicHandler.onClickDelete(item, adapterPosition)
+            historicHandler.onClickMoveToTrash(item, adapterPosition)
+        }
+        binding.speechItem.setOnClickListener {
+            historicHandler.onClickSpeech(item)
         }
     }
 }
