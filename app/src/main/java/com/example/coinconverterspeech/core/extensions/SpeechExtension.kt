@@ -103,6 +103,7 @@ fun String.toNumber(): String{
     newText = newText.replace("/", "")
     newText = newText.replace("+", "")
     newText = newText.replace("$", "")
+    newText = newText.replace(".", "")
     newText = newText.replace(Regex("[^\\p{ASCII}]"), "")
     newText = newText.replace(Regex("[*a-zA-Z]"), "")
     newText = newText.replace(" ", "")

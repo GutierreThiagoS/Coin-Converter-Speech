@@ -53,6 +53,13 @@ class SpeechUtils(private val speakeListner: WeakReference<SpeechListener>, owne
         const val VALUE_COIN = 406
         const val VALUE_COIN_REAL = 407
         const val CONVERT_BRL_TO_USD = 408
+        const val CONVERT_USD_TO_BRL = 409
+        const val CONVERT_BRL_TO_ARS = 410
+        const val CONVERT_USD_TO_ARS = 411
+        const val CONVERT_BRL_TO_CAD = 412
+        const val CONVERT_USD_TO_CAD = 413
+        const val CONVERT_CAD_TO_USD = 414
+        const val CONVERT_CAD_TO_BRL = 415
     }
 
     fun speechInput(requestCode: Int?) {
@@ -223,6 +230,34 @@ class SpeechUtils(private val speakeListner: WeakReference<SpeechListener>, owne
                         speakeListner.get()?.onSpeechResults(CONVERT_BRL_TO_USD, STATUS_SUCCESS, result)
                     }
 
+                    containsConvertDollarToReal(result) -> {
+                        speakeListner.get()?.onSpeechResults(CONVERT_USD_TO_BRL, STATUS_SUCCESS, result)
+                    }
+
+                    containsConvertRealToPeso(result) -> {
+                        speakeListner.get()?.onSpeechResults(CONVERT_BRL_TO_ARS, STATUS_SUCCESS, result)
+                    }
+
+                    containsConvertDollarToPeso(result) -> {
+                        speakeListner.get()?.onSpeechResults(CONVERT_USD_TO_ARS, STATUS_SUCCESS, result)
+                    }
+
+                    containsConvertRealToCanada(result) -> {
+                        speakeListner.get()?.onSpeechResults(CONVERT_BRL_TO_CAD, STATUS_SUCCESS, result)
+                    }
+
+                    containsConvertDollarToCanada(result) -> {
+                        speakeListner.get()?.onSpeechResults(CONVERT_USD_TO_CAD, STATUS_SUCCESS, result)
+                    }
+
+                    containsConvertCanadaToReal(result) -> {
+                        speakeListner.get()?.onSpeechResults(CONVERT_CAD_TO_BRL, STATUS_SUCCESS, result)
+                    }
+
+                    containsConvertCanadaToDollar(result) -> {
+                        speakeListner.get()?.onSpeechResults(CONVERT_CAD_TO_USD, STATUS_SUCCESS, result)
+                    }
+
                     else -> speakeListner.get()?.onSpeechResults(currentRequestCode, STATUS_SUCCESS, result)
                 }
             }
@@ -242,23 +277,168 @@ class SpeechUtils(private val speakeListner: WeakReference<SpeechListener>, owne
     }
 
     private fun containsConvertRealToDollar(result: String): Boolean {
-        return result.contains("real para dólar") && result.wordCount() < 6 ||
-                result.contains("reais para dólar") && result.wordCount() < 6 ||
-                result.contains("real pra dólar") && result.wordCount() < 6 ||
-                result.contains("reais pra dólar") && result.wordCount() < 6 ||
-                result.contains("real em dólar") && result.wordCount() < 6 ||
-                result.contains("reais em dólar") && result.wordCount() < 6 ||
-                result.contains("réis para dona") && result.wordCount() < 6 ||
-                result.contains("réis pra dona") && result.wordCount() < 6 ||
-                result.contains("r$") && result.contains("em dólar") && result.wordCount() < 6 ||
-                result.contains("r$") && result.contains("pra dólar") && result.wordCount() < 6 ||
-                result.contains("r$") && result.contains("para dólar") && result.wordCount() < 6
+        return result.contains("real para dólar") && !result.contains("canadense") && result.wordCount() < 6 ||
+                result.contains("reais para dólar") && !result.contains("canadense") && result.wordCount() < 6 ||
+                result.contains("real pra dólar") && !result.contains("canadense") && result.wordCount() < 6 ||
+                result.contains("reais pra dólar") && !result.contains("canadense") && result.wordCount() < 6 ||
+                result.contains("real em dólar") && !result.contains("canadense") && result.wordCount() < 6 ||
+                result.contains("reais em dólar") && !result.contains("canadense") && result.wordCount() < 6 ||
+                result.contains("réis para dona") && !result.contains("canadense") && result.wordCount() < 6 ||
+                result.contains("réis pra dona") && !result.contains("canadense") && result.wordCount() < 6 ||
+                result.contains("r$") && result.contains("em dólar") && !result.contains("canadense") && result.wordCount() < 6 ||
+                result.contains("r$") && result.contains("pra dólar") && !result.contains("canadense") && result.wordCount() < 6 ||
+                result.contains("r$") && result.contains("para dólar") && !result.contains("canadense") && result.wordCount() < 6
     }
+
+    private fun containsConvertDollarToReal(result: String): Boolean {
+        return result.contains("dólar para real") && !result.contains("canadense") && result.wordCount() < 6 ||
+                result.contains("dólares para real") && !result.contains("canadense") && result.wordCount() < 6 ||
+                result.contains("dólar pra real") && !result.contains("canadense") && result.wordCount() < 6 ||
+                result.contains("dólares pra real") && !result.contains("canadense") && result.wordCount() < 6 ||
+                result.contains("dólar em real") && !result.contains("canadense") && result.wordCount() < 6 ||
+                result.contains("dólares em real") && !result.contains("canadense") && result.wordCount() < 6 ||
+                result.contains("$") && result.contains("em real") && !result.contains("canadense") && result.wordCount() < 6 ||
+                result.contains("$") && result.contains("pra real") && !result.contains("canadense") && result.wordCount() < 6 ||
+                result.contains("$") && result.contains("para real") && !result.contains("canadense") && result.wordCount() < 6
+    }
+
+    private fun containsConvertRealToPeso(result: String): Boolean {
+        return result.contains("real para peso") && result.wordCount() < 6 ||
+                result.contains("real para peso argentino") && result.wordCount() < 6 ||
+                result.contains("reais para peso") && result.wordCount() < 6 ||
+                result.contains("reais para peso argentino") && result.wordCount() < 6 ||
+                result.contains("real pra peso") && result.wordCount() < 6 ||
+                result.contains("real pra peso argentino") && result.wordCount() < 6 ||
+                result.contains("reais pra peso") && result.wordCount() < 6 ||
+                result.contains("reais pra peso argentino") && result.wordCount() < 6 ||
+                result.contains("real em peso") && result.wordCount() < 6 ||
+                result.contains("real em peso argentino") && result.wordCount() < 6 ||
+                result.contains("reais em peso") && result.wordCount() < 6 ||
+                result.contains("reais em peso argentino") && result.wordCount() < 6 ||
+                result.contains("r$") && result.contains("em peso") && result.wordCount() < 6 ||
+                result.contains("r$") && result.contains("em peso argentino") && result.wordCount() < 6 ||
+                result.contains("r$") && result.contains("pra peso") && result.wordCount() < 6 ||
+                result.contains("r$") && result.contains("pra peso argentino") && result.wordCount() < 6 ||
+                result.contains("r$") && result.contains("para peso") && result.wordCount() < 6 ||
+                result.contains("r$") && result.contains("para peso argentino") && result.wordCount() < 6
+    }
+
+    private fun containsConvertDollarToPeso(result: String): Boolean {
+        return result.contains("dólar para peso") && result.wordCount() < 6 ||
+                result.contains("dólar para peso argentino") && result.wordCount() < 6 ||
+                result.contains("dólares para peso") && result.wordCount() < 6 ||
+                result.contains("dólares para peso argentino") && result.wordCount() < 6 ||
+                result.contains("dólar pra peso") && result.wordCount() < 6 ||
+                result.contains("dólar pra peso argentino") && result.wordCount() < 6 ||
+                result.contains("dólares pra peso") && result.wordCount() < 6 ||
+                result.contains("dólares pra peso argentino") && result.wordCount() < 6 ||
+                result.contains("dólar em peso") && result.wordCount() < 6 ||
+                result.contains("dólar em peso argentino") && result.wordCount() < 6 ||
+                result.contains("dólares em peso") && result.wordCount() < 6 ||
+                result.contains("dólares em peso argentino") && result.wordCount() < 6 ||
+                result.contains("$") && result.contains("em peso") && result.wordCount() < 6 ||
+                result.contains("$") && result.contains("em peso argentino") && result.wordCount() < 6 ||
+                result.contains("$") && result.contains("pra peso") && result.wordCount() < 6 ||
+                result.contains("$") && result.contains("pra peso argentino") && result.wordCount() < 6 ||
+                result.contains("$") && result.contains("para peso") && result.wordCount() < 6 ||
+                result.contains("$") && result.contains("para peso argentino") && result.wordCount() < 6
+    }
+
+    private fun containsConvertRealToCanada(result: String): Boolean {
+        return result.contains("real para dólar canadense") && result.wordCount() < 6 ||
+                result.contains("real para canadense") && result.wordCount() < 6 ||
+                result.contains("reais para dólar canadense") && result.wordCount() < 6 ||
+                result.contains("reais para canadense") && result.wordCount() < 6 ||
+                result.contains("real pra dólar canadense") && result.wordCount() < 6 ||
+                result.contains("real pra canadense") && result.wordCount() < 6 ||
+                result.contains("reais pra dólar canadense") && result.wordCount() < 6 ||
+                result.contains("reais pra canadense") && result.wordCount() < 6 ||
+                result.contains("real em dólar canadense") && result.wordCount() < 6 ||
+                result.contains("real em canadense") && result.wordCount() < 6 ||
+                result.contains("reais em dólar canadense") && result.wordCount() < 6 ||
+                result.contains("reais em canadense") && result.wordCount() < 6 ||
+                result.contains("réis para dona canadense") && result.wordCount() < 6 ||
+                result.contains("réis para canadense") && result.wordCount() < 6 ||
+                result.contains("réis pra dona canadense") && result.wordCount() < 6 ||
+                result.contains("réis pra canadense") && result.wordCount() < 6 ||
+                result.contains("r$") && result.contains("em dólar canadense") && result.wordCount() < 6 ||
+                result.contains("r$") && result.contains("em canadense") && result.wordCount() < 6 ||
+                result.contains("r$") && result.contains("pra dólar canadense") && result.wordCount() < 6 ||
+                result.contains("r$") && result.contains("pra canadense") && result.wordCount() < 6 ||
+                result.contains("r$") && result.contains("para dólar canadense") && result.wordCount() < 6 ||
+                result.contains("r$") && result.contains("para canadense") && result.wordCount() < 6
+    }
+
+    private fun containsConvertDollarToCanada(result: String): Boolean {
+        return result.contains("dólar para canadense") && result.wordCount() < 6 ||
+                result.contains("dólar para dólar canadense") && result.wordCount() < 6 ||
+                result.contains("dólares para canadense") && result.wordCount() < 6 ||
+                result.contains("dólares para dólar canadense") && result.wordCount() < 6 ||
+                result.contains("dólar pra canadense") && result.wordCount() < 6 ||
+                result.contains("dólar pra dólar canadense") && result.wordCount() < 6 ||
+                result.contains("dólares pra canadense") && result.wordCount() < 6 ||
+                result.contains("dólares pra dólar canadense") && result.wordCount() < 6 ||
+                result.contains("dólar em canadense") && result.wordCount() < 6 ||
+                result.contains("dólar em dólar canadense") && result.wordCount() < 6 ||
+                result.contains("dólares em canadense") && result.wordCount() < 6 ||
+                result.contains("dólares em dólar canadense") && result.wordCount() < 6 ||
+                result.contains("$") && result.contains("em canadense") && result.wordCount() < 6 ||
+                result.contains("$") && result.contains("em dólar canadense") && result.wordCount() < 6 ||
+                result.contains("$") && result.contains("pra canadense") && result.wordCount() < 6 ||
+                result.contains("$") && result.contains("pra dólar canadense") && result.wordCount() < 6 ||
+                result.contains("$") && result.contains("para canadense") && result.wordCount() < 6 ||
+                result.contains("$") && result.contains("para dólar canadense") && result.wordCount() < 6
+    }
+
+    private fun containsConvertCanadaToReal(result: String): Boolean {
+        return result.contains("dólar canadense para real") && result.wordCount() < 6 ||
+                result.contains("canadense para real") && result.wordCount() < 6 ||
+                result.contains("dólares canadense para real") && result.wordCount() < 6 ||
+                result.contains("canadense para real") && result.wordCount() < 6 ||
+                result.contains("dólar canadense pra real") && result.wordCount() < 6 ||
+                result.contains("canadense pra real") && result.wordCount() < 6 ||
+                result.contains("dólares canadense pra real") && result.wordCount() < 6 ||
+                result.contains("canadense pra real") && result.wordCount() < 6 ||
+                result.contains("dólar canadense em real") && result.wordCount() < 6 ||
+                result.contains("canadense em real") && result.wordCount() < 6 ||
+                result.contains("dólares canadense em real") && result.wordCount() < 6 ||
+                result.contains("canadense em real") && result.wordCount() < 6 ||
+                result.contains("$") && result.contains("canadense em real") && result.wordCount() < 6 ||
+                result.contains("$") && result.contains("canadense pra real") && result.wordCount() < 6 ||
+                result.contains("$") && result.contains("canadense para real") && result.wordCount() < 6
+    }
+
+    private fun containsConvertCanadaToDollar(result: String): Boolean {
+        return result.contains("dólar canadense para dólar") && result.wordCount() < 6 ||
+                result.contains("canadense para dólar") && result.wordCount() < 6 ||
+                result.contains("dólares canadense para dólar") && result.wordCount() < 6 ||
+                result.contains("canadense para dólar") && result.wordCount() < 6 ||
+                result.contains("dólar canadense pra dólar") && result.wordCount() < 6 ||
+                result.contains("canadense pra dólar") && result.wordCount() < 6 ||
+                result.contains("dólares canadense pra dólar") && result.wordCount() < 6 ||
+                result.contains("canadense pra dólar") && result.wordCount() < 6 ||
+                result.contains("dólar canadense em dólar") && result.wordCount() < 6 ||
+                result.contains("canadense em dólar") && result.wordCount() < 6 ||
+                result.contains("dólares canadense em dólar") && result.wordCount() < 6 ||
+                result.contains("canadense em dólar") && result.wordCount() < 6 ||
+                result.contains("$") && result.contains("canadense em dólar") && result.wordCount() < 6 ||
+                result.contains("$") && result.contains("canadense pra dólar") && result.wordCount() < 6 ||
+                result.contains("$") && result.contains("canadense para dólar") && result.wordCount() < 6
+    }
+
+/*
+    const val CONVERT_CAD_TO_USD = 414
+    const val CONVERT_CAD_TO_BRL = 415*/
 
     private fun containsValueCoin(result: String): Boolean{
         return try {
             result.toDouble()
-            if (result.contains("r$")) false else true
+            !result.contains("r$") &&
+                    !result.contains("$") &&
+                    !result.contains("dólar") &&
+                    !result.contains("real") &&
+                    !result.contains("canadense") &&
+                    !result.contains("peso")
         }catch (e: Exception){
             Log.e("containsValueCoin", "$result Exception $e")
             false
@@ -268,7 +448,12 @@ class SpeechUtils(private val speakeListner: WeakReference<SpeechListener>, owne
     private fun containsValueCoinReal(result: String): Boolean{
         return try {
             result.convertValueReal().toDouble()
-            true
+            !result.contains("r$") &&
+                    !result.contains("$") &&
+                    !result.contains("dólar") &&
+                    !result.contains("real") &&
+                    !result.contains("canadense") &&
+                    !result.contains("peso")
         }catch (e: Exception){
             Log.e("ValueCoinValue", "$result Exception $e")
             false

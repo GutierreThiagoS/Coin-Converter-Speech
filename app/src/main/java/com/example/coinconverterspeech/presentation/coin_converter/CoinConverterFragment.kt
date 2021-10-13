@@ -104,10 +104,12 @@ class CoinConverterFragment: Fragment(), SpeechListener {
     }
 
     private fun consultCoin(result: String, isReal: Boolean){
-        viewModel.speechSaved.value = true
-        binding.tilValue.text = if (isReal) result.convertValueReal() else result.toNumber()
-        val search = "${binding.tilFrom.text}-${binding.tilTo.text}"
-        viewModel.getExchangeValue(search)
+        if (!result.toNumber().equals(".", true)) {
+            viewModel.speechSaved.value = true
+            binding.tilValue.text = if (isReal) result.convertValueReal() else result.toNumber()
+            val search = "${binding.tilFrom.text}-${binding.tilTo.text}"
+            viewModel.getExchangeValue(search)
+        } else speechUtils.speak("Erro, diga um numero para converter")
     }
 
     private fun success(it: CoinConverterViewModel.State.Success) {
@@ -167,7 +169,78 @@ class CoinConverterFragment: Fragment(), SpeechListener {
                 binding.tvFrom.setText(Coin.BRL.name, false)
                 binding.tvTo.setText(Coin.USD.name, false)
                 consultCoin(result,
-                    result.contains(".", true)
+                    result.contains(".", true)||
+                            result.contains(" e ", true)||
+                            result.contains(",", true)
+                )
+            }
+            SpeechUtils.CONVERT_USD_TO_BRL -> {
+                binding.tvFrom.setText(Coin.USD.name, false)
+                binding.tvTo.setText(Coin.BRL.name, false)
+                consultCoin(result,
+                    result.contains(".", true)||
+                            result.contains(" e ", true)||
+                            result.contains(",", true)
+                )
+            }
+
+            SpeechUtils.CONVERT_BRL_TO_ARS -> {
+                binding.tvFrom.setText(Coin.BRL.name, false)
+                binding.tvTo.setText(Coin.ARS.name, false)
+                consultCoin(result,
+                    result.contains(".", true)||
+                            result.contains(" e ", true)||
+                            result.contains(",", true)
+                )
+            }
+
+            SpeechUtils.CONVERT_USD_TO_ARS -> {
+                binding.tvFrom.setText(Coin.USD.name, false)
+                binding.tvTo.setText(Coin.ARS.name, false)
+                consultCoin(result,
+                    result.contains(".", true)||
+                            result.contains(" e ", true)||
+                            result.contains(",", true)
+                )
+            }
+
+            SpeechUtils.CONVERT_BRL_TO_CAD -> {
+                binding.tvFrom.setText(Coin.BRL.name, false)
+                binding.tvTo.setText(Coin.CAD.name, false)
+                consultCoin(result,
+                    result.contains(".", true)||
+                    result.contains(" e ", true)||
+                    result.contains(",", true)
+                )
+            }
+
+            SpeechUtils.CONVERT_USD_TO_CAD -> {
+                binding.tvFrom.setText(Coin.USD.name, false)
+                binding.tvTo.setText(Coin.CAD.name, false)
+                consultCoin(result,
+                    result.contains(".", true)||
+                            result.contains(" e ", true)||
+                            result.contains(",", true)
+                )
+            }
+
+            SpeechUtils.CONVERT_CAD_TO_BRL -> {
+                binding.tvFrom.setText(Coin.CAD.name, false)
+                binding.tvTo.setText(Coin.BRL.name, false)
+                consultCoin(result,
+                    result.contains(".", true)||
+                            result.contains(" e ", true)||
+                            result.contains(",", true)
+                )
+            }
+
+            SpeechUtils.CONVERT_CAD_TO_USD -> {
+                binding.tvFrom.setText(Coin.CAD.name, false)
+                binding.tvTo.setText(Coin.USD.name, false)
+                consultCoin(result,
+                    result.contains(".", true)||
+                            result.contains(" e ", true)||
+                            result.contains(",", true)
                 )
             }
         }
