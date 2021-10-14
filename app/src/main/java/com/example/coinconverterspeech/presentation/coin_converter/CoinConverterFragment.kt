@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.widget.doAfterTextChanged
@@ -272,6 +273,59 @@ class CoinConverterFragment: Fragment(), SpeechListener {
                             result.contains(":", true)||
                             result.contains(",", true)
                 )
+            }
+
+            SpeechUtils.CONVERT_TO_USD -> {
+                if (binding.tvFrom.text.toString() != Coin.USD.name) {
+                    binding.tvTo.setText(Coin.USD.name, false)
+                    consultCoin(
+                        result,
+                        result.contains(".", true) ||
+                                result.contains(" e ", true) ||
+                                result.contains(":", true) ||
+                                result.contains(",", true)
+                    )
+                } else Toast.makeText(requireContext(), "As Moedas a ser convertidas são iguais!", Toast.LENGTH_SHORT).show()
+            }
+
+            SpeechUtils.CONVERT_TO_BRL -> {
+                if (binding.tvFrom.text.toString() != Coin.BRL.name) {
+                    binding.tvTo.setText(Coin.BRL.name, false)
+                    consultCoin(
+                        result,
+                        result.contains(".", true) ||
+                                result.contains(" e ", true) ||
+                                result.contains(":", true) ||
+                                result.contains(",", true)
+                    )
+                } else Toast.makeText(requireContext(), "As Moedas a ser convertidas são iguais!", Toast.LENGTH_SHORT).show()
+            }
+
+            SpeechUtils.CONVERT_TO_CAD-> {
+                if (binding.tvFrom.text.toString() != Coin.CAD.name) {
+
+                    binding.tvTo.setText(Coin.CAD.name, false)
+                    consultCoin(
+                        result,
+                        result.contains(".", true) ||
+                                result.contains(" e ", true) ||
+                                result.contains(":", true) ||
+                                result.contains(",", true)
+                    )
+                } else Toast.makeText(requireContext(), "As Moedas a ser convertidas são iguais!", Toast.LENGTH_SHORT).show()
+            }
+
+            SpeechUtils.CONVERT_TO_ARS -> {
+                if (binding.tvFrom.text.toString() != Coin.ARS.name) {
+                    binding.tvTo.setText(Coin.ARS.name, false)
+                    consultCoin(
+                        result,
+                        result.contains(".", true) ||
+                                result.contains(" e ", true) ||
+                                result.contains(":", true) ||
+                                result.contains(",", true)
+                    )
+                } else Toast.makeText(requireContext(), "As Moedas a ser convertidas são iguais!", Toast.LENGTH_SHORT).show()
             }
         }
     }
