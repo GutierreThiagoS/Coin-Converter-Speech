@@ -675,10 +675,6 @@ class SpeechUtils(private val speakeListner: WeakReference<SpeechListener>, owne
                         )
     }
 
-/*
-    const val CONVERT_CAD_TO_USD = 414
-    const val CONVERT_CAD_TO_BRL = 415*/
-
     private fun containsValueCoin(result: String): Boolean{
         return try {
             result.toDouble()
