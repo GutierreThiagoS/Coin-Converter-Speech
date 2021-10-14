@@ -171,6 +171,7 @@ class CoinConverterFragment: Fragment(), SpeechListener {
                 consultCoin(result,
                     result.contains(".", true)||
                             result.contains(" e ", true)||
+                            result.contains(":", true)||
                             result.contains(",", true)
                 )
             }
@@ -180,6 +181,7 @@ class CoinConverterFragment: Fragment(), SpeechListener {
                 consultCoin(result,
                     result.contains(".", true)||
                             result.contains(" e ", true)||
+                            result.contains(":", true)||
                             result.contains(",", true)
                 )
             }
@@ -190,6 +192,7 @@ class CoinConverterFragment: Fragment(), SpeechListener {
                 consultCoin(result,
                     result.contains(".", true)||
                             result.contains(" e ", true)||
+                            result.contains(":", true)||
                             result.contains(",", true)
                 )
             }
@@ -200,6 +203,7 @@ class CoinConverterFragment: Fragment(), SpeechListener {
                 consultCoin(result,
                     result.contains(".", true)||
                             result.contains(" e ", true)||
+                            result.contains(":", true)||
                             result.contains(",", true)
                 )
             }
@@ -210,6 +214,7 @@ class CoinConverterFragment: Fragment(), SpeechListener {
                 consultCoin(result,
                     result.contains(".", true)||
                     result.contains(" e ", true)||
+                    result.contains(":", true)||
                     result.contains(",", true)
                 )
             }
@@ -220,6 +225,7 @@ class CoinConverterFragment: Fragment(), SpeechListener {
                 consultCoin(result,
                     result.contains(".", true)||
                             result.contains(" e ", true)||
+                            result.contains(":", true)||
                             result.contains(",", true)
                 )
             }
@@ -230,6 +236,7 @@ class CoinConverterFragment: Fragment(), SpeechListener {
                 consultCoin(result,
                     result.contains(".", true)||
                             result.contains(" e ", true)||
+                            result.contains(":", true)||
                             result.contains(",", true)
                 )
             }
@@ -240,6 +247,29 @@ class CoinConverterFragment: Fragment(), SpeechListener {
                 consultCoin(result,
                     result.contains(".", true)||
                             result.contains(" e ", true)||
+                            result.contains(":", true)||
+                            result.contains(",", true)
+                )
+            }
+
+            SpeechUtils.CONVERT_ARS_TO_BRL -> {
+                binding.tvFrom.setText(Coin.ARS.name, false)
+                binding.tvTo.setText(Coin.BRL.name, false)
+                consultCoin(result,
+                    result.contains(".", true)||
+                            result.contains(" e ", true)||
+                            result.contains(":", true)||
+                            result.contains(",", true)
+                )
+            }
+
+            SpeechUtils.CONVERT_ARS_TO_USD -> {
+                binding.tvFrom.setText(Coin.ARS.name, false)
+                binding.tvTo.setText(Coin.USD.name, false)
+                consultCoin(result,
+                    result.contains(".", true)||
+                            result.contains(" e ", true)||
+                            result.contains(":", true)||
                             result.contains(",", true)
                 )
             }
