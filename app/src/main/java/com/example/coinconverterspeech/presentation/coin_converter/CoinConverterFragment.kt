@@ -285,7 +285,7 @@ class CoinConverterFragment: Fragment(), SpeechListener {
                                 result.contains(":", true) ||
                                 result.contains(",", true)
                     )
-                } else Toast.makeText(requireContext(), "As Moedas a ser convertidas são iguais!", Toast.LENGTH_SHORT).show()
+                } else speechUtils.speak("As Moedas são iguais!")
             }
 
             SpeechUtils.CONVERT_TO_BRL -> {
@@ -298,7 +298,7 @@ class CoinConverterFragment: Fragment(), SpeechListener {
                                 result.contains(":", true) ||
                                 result.contains(",", true)
                     )
-                } else Toast.makeText(requireContext(), "As Moedas a ser convertidas são iguais!", Toast.LENGTH_SHORT).show()
+                } else speechUtils.speak("As Moedas são iguais!")
             }
 
             SpeechUtils.CONVERT_TO_CAD-> {
@@ -312,7 +312,7 @@ class CoinConverterFragment: Fragment(), SpeechListener {
                                 result.contains(":", true) ||
                                 result.contains(",", true)
                     )
-                } else Toast.makeText(requireContext(), "As Moedas a ser convertidas são iguais!", Toast.LENGTH_SHORT).show()
+                } else speechUtils.speak("As Moedas são iguais!")
             }
 
             SpeechUtils.CONVERT_TO_ARS -> {
@@ -325,7 +325,7 @@ class CoinConverterFragment: Fragment(), SpeechListener {
                                 result.contains(":", true) ||
                                 result.contains(",", true)
                     )
-                } else Toast.makeText(requireContext(), "As Moedas a ser convertidas são iguais!", Toast.LENGTH_SHORT).show()
+                } else speechUtils.speak("As Moedas são iguais!")
             }
         }
     }
