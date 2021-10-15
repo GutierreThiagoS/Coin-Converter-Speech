@@ -10,8 +10,14 @@ import org.koin.core.context.startKoin
 
 class App : Application() {
 
+    companion object{
+        lateinit var context: Application
+    }
+
     override fun onCreate() {
         super.onCreate()
+
+        context = this@App
 
         startKoin {
             androidContext(this@App)
@@ -20,5 +26,6 @@ class App : Application() {
         DataModules.load()
         DomainModule.load()
         PresentationModule.load()
+
     }
 }

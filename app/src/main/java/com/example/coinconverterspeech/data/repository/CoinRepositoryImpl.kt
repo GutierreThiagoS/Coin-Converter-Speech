@@ -1,9 +1,11 @@
 package com.example.coinconverterspeech.data.repository
 
 import com.example.coinconverterspeech.core.exceptions.RemoteException
+import com.example.coinconverterspeech.data.Convert
 import com.example.coinconverterspeech.data.database.AppDatabase
 import com.example.coinconverterspeech.data.model.ErrorResponse
-import com.example.coinconverterspeech.data.model.ExchangeResponseValue
+import com.example.coinconverterspeech.data.model.ExchangeValue
+import com.example.coinconverterspeech.data.response.ExchangeResponseValue
 import com.example.coinconverterspeech.data.services.AwesomeService
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
@@ -31,10 +33,23 @@ class CoinRepositoryImpl(
     }
 
     override suspend fun save(exchange: ExchangeResponseValue) {
-        dao.save(exchange)
+        dao.save(Convert.convert(exchange))
     }
 
-    override fun list(): Flow<List<ExchangeResponseValue>> {
+    override fun list(): Flow<List<ExchangeValue>> {
         return dao.findAll()
     }
+
+    override fun getListDeleted(): Flow<List<ExchangeValue>> {
+        return dao.findAllDeleted()
+    }
+
+    override suspend fun update(exchange: ExchangeValue) {
+        dao.update(exchange)
+    }
+
+    override suspend fun deletedPermanently(exchange: ExchangeValue) {
+        dao.delete(exchange)
+    }
+
 }

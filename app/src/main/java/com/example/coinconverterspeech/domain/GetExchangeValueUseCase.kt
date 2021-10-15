@@ -1,8 +1,8 @@
 package com.example.coinconverterspeech.domain
 
 import com.example.coinconverterspeech.core.UseCase
-import com.example.coinconverterspeech.data.model.ExchangeResponseValue
 import com.example.coinconverterspeech.data.repository.CoinRepository
+import com.example.coinconverterspeech.data.response.ExchangeResponseValue
 import kotlinx.coroutines.flow.Flow
 
 class GetExchangeValueUseCase(

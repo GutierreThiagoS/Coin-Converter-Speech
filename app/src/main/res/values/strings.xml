@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Coin Converter Speech</string>
+    <string name="converter">Converter</string>
+    <string name="save">Salvas</string>
+    <string name="deleted">Lixeira</string>
+    <string name="deleted_label">Excluir</string>
+    <string name="restore_label">Restaurar</string>
+    <string name="speech_input_button">speechInputButton</string>
 </resources>

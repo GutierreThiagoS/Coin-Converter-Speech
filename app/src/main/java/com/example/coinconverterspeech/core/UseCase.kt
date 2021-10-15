@@ -14,6 +14,8 @@ abstract class UseCase<Param, Source> {
             throw UnsupportedOperationException()
 
         suspend operator fun invoke(): Flow<Source> = execute()
+
+        override suspend fun invoke(param: None) = execute(param)
     }
 
     abstract class NoSource<Params> : UseCase<Params, Unit>() {
